@@ -4,14 +4,8 @@ import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import './styles.css';
-import logo from '../../assets/imgs/thanos_cartum.jpg';
 import Grid from '@material-ui/core/Grid';
 
-import {
-
-  Link
-
-} from "react-router-dom";
 
 
 const Navegador = (props) => {

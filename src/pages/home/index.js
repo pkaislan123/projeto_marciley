@@ -1,27 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Rodape from '../../components/Rodape';
 import Navegador from '../../components/NavBar';
 import capa from '../../assets/imgs/capa.jpg';
-import Grid from '@material-ui/core/Grid';
 import './styles.scss';
-import api from '../../services/api';
-
-import contrato from '../../assets/imgs/contrato.jpeg'
 
 const Home = () => {
 
 
-  const [dadosStatus, setDadosStatus] = useState([]);
-
-  const [loading, setLoading] = useState(true);
 
 
-  useEffect(() => {
-
-
-
-
-  }, []);
 
 
 
