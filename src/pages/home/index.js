@@ -21,24 +21,6 @@ const Home = () => {
 
 
 
-    async function listarStatus() {
-      try {
-
-        const response = await api.get('/v1/protected/statusarmazem/listar');
-        setDadosStatus(response.data)
-
-        setLoading(false);
-
-      } catch (_err) {
-        // avisar('Houve um problema com o login, verifique suas credenciais! ' + cpf + " " + senha );
-        console.log("Erro ao listar seus dados: " + _err)
-
-      }
-
-    }
-
-    listarStatus();
-
   }, []);
 
 
