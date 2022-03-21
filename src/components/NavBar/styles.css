@@ -25,14 +25,20 @@
     color: white;
 }
 
+#nav-link-dropdown{
+  font-size: 22px;
+  color: black;
+}
+
+
 #nav-link-inicio{
   font-size: 22px;
-  color: white;
+  color: black;
 }
 
 #nav-link-mobile{
   font-size: 22px;
-  color: white;
+  color: black;
   background: black; 
 }
 
@@ -45,13 +51,15 @@
 }
 
 .nav-item .dropdown-menu {
-  background: rgba(0,0,0,1);  }
+  background-color: white;
+}
   
   .nav-item .dropdown-item {
-    color: white;
-    background: rgba(0,0,0,0.1);    font-size: 22px;
+    color: black;
+    background-color: white;  
+    font-size: 22px;
   }
   
   .nav-item .dropdown-item:hover {
-    background: rgba(0,0,0,0.1);    
+    color: black;
   }

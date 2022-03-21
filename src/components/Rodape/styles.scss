@@ -425,16 +425,19 @@ z-index: 9;
   padding-bottom: 150px;
   padding-top: 30px;
 }
-.product-widget-area .zigzag-bottom{background: #333}
+.product-widget-area .zigzag-bottom{background: #03000f}
 .footer-top-area .zigzag-bottom{background: #000}
-.footer-top-area {background: none repeat scroll 0 0 #333;
+.footer-top-area {background: none repeat scroll 0 0 #03000f;
 color: #999;
 padding: 35px 0 180px;}
 
 
-.footer-bottom-area {background: #000;color: #fff}
+.footer-bottom-area {background: #03000f;color: #fff}
 .footer-about-us span {
-  color: #1abc9c;
+  color: #fff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+
 }
 .footer-wid-title {
   font-family: raleway;
