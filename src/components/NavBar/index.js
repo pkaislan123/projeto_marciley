@@ -49,7 +49,7 @@ const Navegador = (props) => {
 
           >
             <h1 >
-              <span style={{ paddingLeft: 50, fontSize: 42, fontFamily: 'Verdana', color: 'white', fontWeight: 600 }}>titaniwm</span>
+              <span style={{ paddingLeft: 50, fontSize: 42, fontFamily: 'Verdana', color: 'white', fontWeight: 600 }}>marciley</span>
             </h1>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={10} xl={10}
@@ -71,51 +71,15 @@ const Navegador = (props) => {
                       style={{ textDecoration: props.servicos }}
                     >
 
-                      <h2 >
-                        <span style={{padding:10, fontSize: 22, fontFamily: 'Verdana', color: 'black', textAlign:'center' }}>Gestão</span>
-                      </h2>
-                      <NavDropdown.Item eventKey="1.0" id="nav-link-dropdown" href="/minhaconta">Contratos
+                   
+                      <NavDropdown.Item eventKey="1.0" id="nav-link-dropdown" href="/produtos">Atacado e Varejo
                       </NavDropdown.Item>
 
-                      <NavDropdown.Item eventKey="2.0" id="nav-link-dropdown" href="/patio">Finanças
-                      </NavDropdown.Item>
-
-                      <NavDropdown.Item eventKey="3.0" id="nav-link-dropdown" href="/cotacoes">RH
-                      </NavDropdown.Item>
-
+                    
 
                     </NavDropdown>
 
-                    <NavDropdown
-                      title="Criação"
-                      id="nav-dropdown"
-                      style={{ textDecoration: props.servicos }}
-                    >
-
-                      <h2 >
-                        <span style={{padding:10, fontSize: 22, fontFamily: 'Verdana', color: 'black', textAlign:'center' }}>Design e Inovação</span>
-                      </h2>
-                      <NavDropdown.Item eventKey="1.0" id="nav-link-dropdown" href="/minhaconta">WebSites
-                      </NavDropdown.Item>
-
-                      <NavDropdown.Item eventKey="2.0" id="nav-link-dropdown" href="/patio">Desktop
-                      </NavDropdown.Item>
-
-                      <NavDropdown.Item eventKey="3.0" id="nav-link-dropdown" href="/cotacoes">ChatBot
-                      </NavDropdown.Item>
-
-
-                    </NavDropdown>
-
-                    <Nav.Item>
-                      <Nav.Link id="nav-link" style={{ textDecoration: props.sobre }} href="/sobre">  a titaniwm</Nav.Link>
-                    </Nav.Item>
-
-                    <Nav.Item>
-                      <Nav.Link id="nav-link" style={{ textDecoration: props.noticias }} href="/noticias">  BLog </Nav.Link>
-                    </Nav.Item>
-
-
+                 
 
 
 

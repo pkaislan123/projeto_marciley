@@ -26,7 +26,7 @@ const Rodape = () => {
                                     />
                                     <h2>
                                         <span style={{ paddingTop: 20, fontSize: 42, fontWeight: 600 }} >
-                                            titaniwm
+                                            projeto marciley
                                         </span>
                                     </h2>
 
@@ -35,30 +35,11 @@ const Rodape = () => {
                             </Grid>
 
 
-                            <Grid item xs={12} sm={12} md={12} lg={3} xl={3}>
-                                <div className="footer-menu">
-                                    <h2 className="footer-wid-title">Sofwares </h2>
-                                    <ul>
-                                        <li><a href="/minhaconta">Gestão de Contratos</a></li>
-                                        <li><a href="/sobre">Gestão de Finanças</a></li>
-                                        <li><a href="/localizacao">Gestão de RH</a></li>
-                                        <li><a href="/localizacao">Ainda não encontrei o que procuro</a></li>
-                                        <li><a href="/noticias">Blog, Notícias e Tutoriais</a></li>
-                                        <li><a href="/contato">Fale Conosoco</a></li>
-                                    </ul>
-                                </div>
-                            </Grid>
 
                             <Grid item xs={12} sm={12} md={12} lg={3} xl={3}>
                                 <div className="footer-menu">
-                                    <h2 className="footer-wid-title">Serviços</h2>
-                                    <ul>
-                                        <li><a href="/minhaconta">Criação de WebSites</a></li>
-                                        <li><a href="/sobre">Desktop</a></li>
-                                        <li><a href="/sobre">ChatBot</a></li>
-                                        <li><a href="/localizacao">IOT</a></li>
-                                        <li><a href="/localizacao">Automação</a></li>
-                                    </ul>
+                                    <h2 className="footer-wid-title">Produtos</h2>
+                                   
                                 </div>
                             </Grid>
 
