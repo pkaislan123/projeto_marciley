@@ -60,7 +60,6 @@ function App() {
       <Switch>
       <PublicRoute restricted={false} component={Home} path="/" exact />
       <PublicRoute restricted={false} component={Produtos} path="/produtos" exact />
-     
 
       </Switch>
 

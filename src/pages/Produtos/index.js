@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Rodape from '../../components/Rodape';
 import Navegador from '../../components/NavBar';
@@ -6,7 +7,7 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import api from '../../services/api';
 import Grid from '@material-ui/core/Grid';
 import './styles.css';
-import { Button, TextField, InputAdornment, Select, MenuItem,InputLabel } from '@material-ui/core/';
+import { Button, TextField, InputAdornment, Select, MenuItem, InputLabel } from '@material-ui/core/';
 import { styled } from '@material-ui/core/styles';
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
 import Carousel from 'react-bootstrap/Carousel'
@@ -28,6 +29,7 @@ const CssTextField = styled(TextField)({
     '& fieldset': {
       borderColor: 'orange',
     },
+
     '&:hover fieldset': {
       borderColor: 'orange',
     },
@@ -35,6 +37,13 @@ const CssTextField = styled(TextField)({
       borderColor: 'green',
     },
   },
+  "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button": {
+    opacity: 1,
+    margin: 0,
+  }
+
+
+
 });
 
 const SearchTextField = styled(TextField)({
@@ -57,6 +66,41 @@ const SearchTextField = styled(TextField)({
   },
 });
 
+const CustomButtom = styled(Button)({
+  boxShadow: 'none',
+  textTransform: 'none',
+  fontSize: 14,
+  padding: '6px 12px',
+  border: '1px solid',
+  lineHeight: 1.5,
+  backgroundColor: '#0063cc',
+  borderColor: '#FFF',
+  fontFamily: [
+    '-apple-system',
+    'BlinkMacSystemFont',
+    '"Segoe UI"',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+    '"Apple Color Emoji"',
+    '"Segoe UI Emoji"',
+    '"Segoe UI Symbol"',
+  ].join(','),
+  '&:hover': {
+    backgroundColor: '#0069d9',
+    borderColor: 'green',
+    boxShadow: 'none',
+  },
+  '&:active': {
+    boxShadow: 'none',
+    backgroundColor: '#0062cc',
+    borderColor: '#005cbf',
+  },
+  '&:focus': {
+    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+  },
+});
 
 
 const Produtos = () => {
@@ -65,7 +109,7 @@ const Produtos = () => {
   const [loading, setLoading] = useState(true);
   const [produtos, setProdutos] = useState([]);
 
-  
+
   var formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
@@ -79,7 +123,7 @@ const Produtos = () => {
     {
       page: 0,
       size: 20,
-      searchTerm: "%",
+      searchTerm: "",
       ordem: 0,
 
     }
@@ -99,6 +143,7 @@ const Produtos = () => {
           }
         });
 
+        console.log("funcao chamada!")
 
         let dados = response.data.content.map((produto) => {
 
@@ -279,7 +324,7 @@ const Produtos = () => {
               name="ordem"
               onChange={e => setParametros(prevState => ({ ...prevState, [e.target.name]: e.target.value }))}
               label="ordem"
-              style={{paddingLeft: 5}}
+              style={{ paddingLeft: 5 }}
             >
               <MenuItem value={0} default >Mais Vendidos</MenuItem>
               <MenuItem value={1}>Menor Preço</MenuItem>
@@ -305,8 +350,8 @@ const Produtos = () => {
               container
               direction="row"
               item xs={12} sm={12} md={12} lg={12} xl={12}
-              justifyContent="center"
-              alignItems="center"
+              justifyContent="flex-start"
+              alignItems="flex-start"
             >
               <Grid item xs={1} sm={1} md={1} lg={1} xl={1} >
               </Grid>
@@ -421,9 +466,36 @@ const Produtos = () => {
               </Grid>
 
 
-              <Grid item xs={12} sm={12} md={12} lg={2} xl={2} style={{ top: 0, backgroundColor: 'red' }}
+              <Grid
+                container
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                style={{ paddingTop: 20, backgroundColor: 'green', margin: 10 }}
+                item xs={12} sm={12} md={12} lg={2} xl={2}
               >
-                <span >Carrinho de Compras</span>
+                <Grid
+                  item xs={12} sm={12} md={12} lg={12} xl={12}
+                >
+                  <span style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>Carrinho de Compras</span>
+
+                </Grid>
+                <Grid
+                  item xs={12} sm={12} md={12} lg={12} xl={12}
+                  style={{ padding: 20 }}
+                >
+                  <CustomButtom
+                    variant="contained" color="primary" size="small"
+                    startIcon={<LocalGroceryStoreIcon />} >
+
+                    <a
+                      style={{  fontWeight: 'bold' }}
+                      href="https://api.whatsapp.com/send?1=pt_BR&phone=5538999416698&message=Pedido Finalizado">
+
+                      Finalizar Pedido</a>
+
+                  </CustomButtom>
+                </Grid>
               </Grid>
 
             </Grid>
