@@ -6,9 +6,9 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import api from '../../services/api';
 import Grid from '@material-ui/core/Grid';
 import './styles.css';
-import TextField from '@material-ui/core/TextField';
+import { Button, TextField } from '@material-ui/core/';
 import { styled } from '@material-ui/core/styles';
-
+import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
 
 const CssTextField = styled(TextField)({
   '& label.Mui-focused': {
@@ -109,14 +109,15 @@ const Produtos = () => {
               container
               direction="row"
               item xs={12} sm={12} md={12} lg={12} xl={12}
-              justifyContent="flex-start"
-              alignItems="flex-start"
+              justifyContent="center"
+              alignItems="center"
             >
-              <Grid item xs={12} sm={12} md={12} lg={1} xl={1} >
+              <Grid item xs={1} sm={1} md={1} lg={1} xl={1} >
               </Grid>
 
-              <Grid item xs={12} sm={12} md={12} lg={10} xl={10}
+              <Grid item xs={12} sm={10} md={9} lg={9} xl={9}
                 container
+                spacing={3}
               >
 
                 {
@@ -125,16 +126,16 @@ const Produtos = () => {
                       key={produto.id_produto}
                       container
                       direction="row"
-                      item xs={12} sm={12} md={12} lg={3} xl={3}
-
-                      style={{ padding: 10 }}
+                      item xs={12} sm={6} md={4} lg={3} xl={3}
+                      justifyContent="center"
+                      alignItems="center"
                     >
                       <Grid
                         item xs={12} sm={12} md={12} lg={12} xl={12}
                         justifyContent="flex-start"
                         alignItems="flex-start"
                       >
-                        <img alt="img1" style={{ width: '100%' }}
+                        <img alt="img1" style={{ width: 250, height: 250 }}
                           src={produto.url_imagem}
                         />
                       </Grid>
@@ -154,29 +155,30 @@ const Produtos = () => {
 
 
                       <Grid
-                        item xs={12} sm={12} md={12} lg={12} xl={12}
+                        container
+                        direction="row"
                         justifyContent="flex-start"
                         alignItems="flex-start"
+                        style={{ padding: 10 }}
+                        spacing={3}
                       >
-                        <CssTextField
-                          shrink
-                          id={produto.id_produto}
-                          label=""
-                          type="number"
-                          inputProps={{ inputMode: 'numeric', pattern: '[0-100]*' }}
-                          margin="normal"
-                          variant="outlined"
-                          size="small"
-                          helperText="quantidade"
 
-
-                        />
-
+                       
+                          <CssTextField
+                            id={produto.id_produto}
+                            label=""
+                            type="number"
+                            variant="outlined"
+                            size="small"
+                            helperText="quantidade"
+                            style={{width: 90, paddingRight: 10}}
+                          />
+                      
+                          <Button
+                            variant="contained" color="primary" size="small" 
+                            startIcon={<LocalGroceryStoreIcon />} >
+                              Comprar</Button>
                       </Grid>
-
-
-
-
 
 
                     </Grid>
@@ -185,7 +187,11 @@ const Produtos = () => {
                 }
               </Grid>
 
-              <Grid item xs={12} sm={12} md={12} lg={1} xl={1} >
+
+              <Grid item xs={12} sm={12} md={12} lg={2} xl={2} style={{ top: 0, backgroundColor: 'red' }}
+                justifyContent="flex-start"
+                alignItems="flex-start">
+                <span >Carrinho de Compras</span>
               </Grid>
 
             </Grid>
