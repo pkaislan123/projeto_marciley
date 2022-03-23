@@ -9,6 +9,7 @@ import './styles.css';
 import { Button, TextField } from '@material-ui/core/';
 import { styled } from '@material-ui/core/styles';
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
+import Carousel from 'react-bootstrap/Carousel'
 
 const CssTextField = styled(TextField)({
   '& label.Mui-focused': {
@@ -95,9 +96,40 @@ const Produtos = () => {
         </div>
       </div>
 
+      <Carousel interval={5000} fade style={{ width: '100%' }}>
+          <Carousel.Item>
+            <img 
+              className="d-block w-100"
+              src="https://s3.amazonaws.com/delivery.bretas.com.br/files/banner_imagens/8a025b5d364b88ae6b69d189509930f3.png"
+              alt="First slide"
+            />
+            <Carousel.Caption>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img 
+              className="d-block w-100"
+              src="https://s3.amazonaws.com/delivery.bretas.com.br/files/banner_imagens/a3629d300be02b6193ccb9ed4aa9e70f.jpg"
+              alt="Milho"
+            />
+
+            <Carousel.Caption>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img 
+              className="d-block w-100"
+              src="https://s3.amazonaws.com/delivery.bretas.com.br/files/banner_imagens/BANNER-DELIVERY-100x100px.png"
+              alt="Third slide"
+            />
+
+            <Carousel.Caption>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
 
 
-      <div>
+      <div >
         {loading ?
           <Skeleton animation={"wave"} width={'100%'} style={{ backgroundColor: '#48D1CC' }}>
           </Skeleton>
@@ -118,6 +150,7 @@ const Produtos = () => {
               <Grid item xs={12} sm={10} md={9} lg={9} xl={9}
                 container
                 spacing={3}
+                style={{paddingTop: 20}}
               >
 
                 {
@@ -135,7 +168,7 @@ const Produtos = () => {
                         justifyContent="flex-start"
                         alignItems="flex-start"
                       >
-                        <img alt="img1" style={{ width: 250, height: 250 }}
+                        <img alt="img1" style={{ width: 200, height: 200 }}
                           src={produto.url_imagem}
                         />
                       </Grid>
