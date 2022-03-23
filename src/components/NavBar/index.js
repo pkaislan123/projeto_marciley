@@ -44,7 +44,6 @@ const Navegador = (props) => {
           direction={'row'}
         >
           <Grid item xs={12} sm={12} md={12} lg={2} xl={2}
-            justifyContent="center"
             style={{ textAlign: "center" }}
 
           >
