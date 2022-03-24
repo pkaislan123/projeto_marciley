@@ -47,9 +47,9 @@ const Navegador = (props) => {
             style={{ textAlign: "center" }}
 
           >
-            <h1 >
-              <span style={{ paddingLeft: 50, fontSize: 42, fontFamily: 'Verdana', color: 'white', fontWeight: 600 }}>marciley</span>
-            </h1>
+            <a href={"/"} >
+              <span  style={{ paddingLeft: 50, paddingBottom: 20, fontSize: 42, fontFamily: 'Verdana', color: 'white', fontWeight: 600 }}>marciley</span>
+            </a>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={10} xl={10}
           >

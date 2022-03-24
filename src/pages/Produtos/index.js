@@ -15,8 +15,7 @@ import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-
-
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const CssTextField = styled(TextField)({
   '& label.Mui-focused': {
@@ -103,11 +102,79 @@ const CustomButtom = styled(Button)({
 });
 
 
+const CustomButtom3 = styled(Button)({
+  boxShadow: 'none',
+  color: 'black',
+  textTransform: 'none',
+  fontSize: 14,
+  border: '1px solid',
+  lineHeight: 1.5,
+  backgroundColor: 'white',
+  borderColor: '#000',
+
+  '&:hover': {
+    backgroundColor: 'red',
+    borderColor: 'white',
+    boxShadow: 'none',
+  },
+  '&:active': {
+    boxShadow: 'none',
+    backgroundColor: 'orange',
+    borderColor: 'white',
+  },
+  '&:focus': {
+    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+  },
+});
+
+
+const CustomButtom2 = styled(Button)({
+  boxShadow: 'none',
+  color: 'white',
+  textTransform: 'none',
+  fontSize: 14,
+  padding: '6px 12px',
+  border: '1px solid',
+  lineHeight: 1.5,
+  backgroundColor: 'orange',
+  borderColor: '#FFF',
+  fontFamily: [
+    '-apple-system',
+    'BlinkMacSystemFont',
+    '"Segoe UI"',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+    '"Apple Color Emoji"',
+    '"Segoe UI Emoji"',
+    '"Segoe UI Symbol"',
+  ].join(','),
+  '&:hover': {
+    backgroundColor: 'orange',
+    borderColor: 'white',
+    boxShadow: 'none',
+  },
+  '&:active': {
+    boxShadow: 'none',
+    backgroundColor: 'orange',
+    borderColor: 'white',
+  },
+  '&:focus': {
+    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+  },
+});
+
+
+
 const Produtos = () => {
 
 
   const [loading, setLoading] = useState(true);
   const [produtos, setProdutos] = useState([]);
+  const [carrinho, setCarrinho] = useState([]);
+  const [num_itens_carrinho, setNumItensCarrinho] = useState(0);
+  const [valor_total_carrinho, setValorTotalCarrinho] = useState(0.0);
 
 
   var formatter = new Intl.NumberFormat('pt-BR', {
@@ -155,16 +222,63 @@ const Produtos = () => {
         setProdutos(dados);
         setLoading(false);
 
+
       } catch (_err) {
         // avisar('Houve um problema com o login, verifique suas credenciais! ' + cpf + " " + senha );
         console.log("Erro ao listar produtos: " + _err)
 
       }
 
+
+    }
+
+
+    function recuperarCarrinhoInicial(carrinho) {
+      try {
+        try {
+          if (localStorage.getItem('carrinho') !== "undefined" && localStorage.getItem('carrinho') != null) {
+            console.log("cookie nao e indefinido");
+
+
+            let json_str = localStorage.getItem('carrinho');
+            let carrinho_atual = JSON.parse(json_str);
+
+            setCarrinho(carrinho_atual);
+
+            let valor_total = 0.0;
+            let total_itens = 0;
+
+            carrinho_atual.map((item) => {
+
+              valor_total += (item.valor_produto * item.quantidade_a_vender);
+              total_itens += parseInt(item.quantidade_a_vender)
+
+              return item;
+            });
+            setNumItensCarrinho(total_itens)
+            setValorTotalCarrinho(valor_total);
+
+          } else {
+            console.log("cookie e indefinido");
+
+            var carrinho_para_json = JSON.stringify(carrinho);
+            localStorage.setItem('carrinho', carrinho_para_json);
+
+          }
+        } catch (_err) {
+
+          carrinho_para_json = JSON.stringify(carrinho);
+          localStorage.setItem('carrinho', carrinho_para_json);
+
+        }
+      } catch (_err) {
+        setCarrinho(carrinho)
+      }
     }
 
     listarProdutos();
 
+    recuperarCarrinhoInicial();
 
   }, [parametros]);
 
@@ -219,6 +333,80 @@ const Produtos = () => {
     setProdutos(novaLista);
   }
 
+  const handleComprar = (id_produto) => {
+
+    const produto_index = produtos.findIndex(produto => produto.id_produto === id_produto);
+
+    let novo_array = carrinho;
+    novo_array.push(produtos[produto_index]);
+
+    setCarrinho(novo_array);
+
+
+    let valor_total = 0.0;
+    let total_itens = 0;
+    novo_array.map((item) => {
+
+      valor_total += (item.valor_produto * item.quantidade_a_vender);
+      total_itens += parseInt(item.quantidade_a_vender)
+      return item;
+    });
+
+
+    var carrinho_para_json = JSON.stringify(carrinho);
+    localStorage.setItem('carrinho', carrinho_para_json);
+
+    setNumItensCarrinho(total_itens)
+    setValorTotalCarrinho(valor_total);
+  }
+
+
+  function recuperarCarrinho() {
+
+    try {
+      if (localStorage.getItem('carrinho') !== "undefined" && localStorage.getItem('carrinho') != null) {
+        console.log("cookie nao e indefinido");
+
+
+        let json_str = localStorage.getItem('carrinho');
+        let carrinho_atual = JSON.parse(json_str);
+
+        setCarrinho(carrinho_atual);
+
+        let valor_total = 0.0;
+        let total_itens = 0;
+
+        carrinho_atual.map((item) => {
+
+          valor_total += (item.valor_produto * item.quantidade_a_vender);
+          total_itens += parseInt(item.quantidade_a_vender)
+
+          return item;
+        });
+        setNumItensCarrinho(total_itens)
+        setValorTotalCarrinho(valor_total);
+
+      } else {
+        console.log("cookie e indefinido");
+
+        var carrinho_para_json = JSON.stringify(carrinho);
+        localStorage.setItem('carrinho', carrinho_para_json);
+
+      }
+    } catch (_err) {
+
+      carrinho_para_json = JSON.stringify(carrinho);
+      localStorage.setItem('carrinho', carrinho_para_json);
+
+    }
+
+  }
+
+  function handleLimparCarrinho() {
+    var carrinho_para_json = JSON.stringify([]);
+    localStorage.setItem('carrinho', carrinho_para_json);
+    recuperarCarrinho();
+  }
 
 
   return (
@@ -411,6 +599,9 @@ const Produtos = () => {
                           size="small"
                           onClick={() => handleChecked(produto.id_produto)}
                         >
+                          <span style={{ fontSize: 12, color: 'black' }}>
+                            Descrição
+                          </span>
                           {produto.isChecked ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                         </IconButton>
                         <Collapse in={produto.isChecked}>
@@ -455,7 +646,11 @@ const Produtos = () => {
 
                         <Button
                           variant="contained" color="primary" size="small"
-                          startIcon={<LocalGroceryStoreIcon />} >
+                          startIcon={<LocalGroceryStoreIcon />}
+                          onClick={() => {
+                            handleComprar(produto.id_produto);
+                          }}
+                        >
                           Comprar</Button>
                       </Grid>
 
@@ -478,8 +673,49 @@ const Produtos = () => {
                   item xs={12} sm={12} md={12} lg={12} xl={12}
                 >
                   <span style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>Carrinho de Compras</span>
+                </Grid>
+
+                <Grid
+                  item xs={12} sm={12} md={12} lg={12} xl={12}
+                  style={{ padding: 20 }}
+                  container
+                  direction="row"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+
+                  <Grid
+                    item xs={6} sm={6} md={6} lg={6} xl={6}
+                    alignItems="flex-end"
+                    container
+                    justifyContent="flex-end"
+
+                  >
+                    <CustomButtom3
+                      onClick={() => handleLimparCarrinho()}
+                    >
+                      <DeleteIcon />
+                    </CustomButtom3>
+                  </Grid>
+
+                  <Grid
+                    alignItems="flex-start"
+                    container
+                    justifyContent="flex-start"
+                    item xs={6} sm={6} md={6} lg={6} xl={6}
+                  >
+                    <CustomButtom2
+                    >
+                      <a
+                        style={{ fontWeight: 'bold', color: 'white' }}
+                        href={"/carrinho"}>
+                        {num_itens_carrinho} itens {formatter.format(valor_total_carrinho)} </a>
+                    </CustomButtom2>
+                  </Grid>
 
                 </Grid>
+
+
                 <Grid
                   item xs={12} sm={12} md={12} lg={12} xl={12}
                   style={{ padding: 20 }}
@@ -489,8 +725,8 @@ const Produtos = () => {
                     startIcon={<LocalGroceryStoreIcon />} >
 
                     <a
-                      style={{  fontWeight: 'bold' }}
-                      href="https://api.whatsapp.com/send?1=pt_BR&phone=5538999416698&message=Pedido Finalizado">
+                      style={{ fontWeight: 'bold' }}
+                      href={"/carrinho"}>
 
                       Finalizar Pedido</a>
 

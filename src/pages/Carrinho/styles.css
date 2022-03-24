@@ -1,0 +1,22 @@
+
+.alogo {
+  color: #1abc9c;
+  margin-left: 50px;
+  text-decoration: none;
+  background-color: none;
+}
+
+a {
+  text-decoration: none; 
+
+}
+
+  a:hover {
+    text-decoration: underline; 
+
+  }
+
+
+
+
+

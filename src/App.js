@@ -4,7 +4,7 @@ import './styles/global.scss';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import Home from './pages/home';
-
+import Carrinho from './pages/Carrinho';
 import Produtos from './pages/Produtos';
 
 import Cookies from 'js-cookie';
@@ -60,6 +60,7 @@ function App() {
       <Switch>
       <PublicRoute restricted={false} component={Home} path="/" exact />
       <PublicRoute restricted={false} component={Produtos} path="/produtos" exact />
+      <PublicRoute restricted={false} component={Carrinho} path="/carrinho" exact />
 
       </Switch>
 
